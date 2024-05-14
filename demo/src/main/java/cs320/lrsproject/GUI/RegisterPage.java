@@ -10,6 +10,7 @@ public class RegisterPage extends JFrame {
 
     private JTextField emailField;
     private JTextField passwordField;
+    private UserService userService;
 
     private void Register(String email, String password) {
         // TODO create a new user in SQL Database
@@ -23,6 +24,8 @@ public class RegisterPage extends JFrame {
     };
     
     public RegisterPage() {
+
+        userService = context.getBean(UserService.class); //UserService diye bişi ekledim service bağlantı için bu
 
         setTitle("Register Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,8 +45,17 @@ public class RegisterPage extends JFrame {
         registerButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Register(emailLabel.getText(), passwordField.getText());
-                Register();
+                String email = emailField.getText();
+                String password = passwordField.getText(); // No need to use getPassword()
+
+                if (userService.registerUser(email, password)) { // Simplified method call
+                    JOptionPane.showMessageDialog(null, "New account successfully created");
+                    LoginPage loginPage = new LoginPage(context);
+                    loginPage.setVisible(true);
+                    dispose();
+                } else {
+                    JOptionPane.showMessageDialog(null, "Error creating account");
+                }
             }
         });
 
