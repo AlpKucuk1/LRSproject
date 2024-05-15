@@ -1,0 +1,25 @@
+package cs320.lrsproject.model;
+
+import javax.persistence.*;
+import java.util.Date;
+
+@Entity
+public class Rental {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long rentalId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+
+    private Date rentalDate;
+    private Date returnDate;
+    private String status; // 'active', 'returned'
+
+    // Getters and setters
+}
