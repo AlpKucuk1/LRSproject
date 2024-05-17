@@ -15,7 +15,7 @@ public class ProfilePage extends JFrame {
     private JButton navigateButton;
 
     private PersonalInfo personalInfo;
-    private List<RentalRecord> rentalHistory;
+    private ArrayList<RentalRecord> rentalHistory;
 
     public ProfilePage(PersonalInfo personalInfo, List<RentalRecord> rentalHistory) {
         this.personalInfo = personalInfo;
