@@ -6,6 +6,9 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class PaymentPage extends JFrame {
+public class RentPage extends JFrame {
     
+    public RentPage(String ISBN) {
+        
+    }
 }

@@ -8,12 +8,13 @@ import org.springframework.context.ApplicationContext;
 
 public class MainPage extends JFrame {
     public MainPage(ApplicationContext context) {
+
         setTitle("Main Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(400, 200);
         setLocationRelativeTo(null);
 
-        JPanel panel = new JPanel(new GridLayout(3, 1));
+        JPanel panel = new JPanel(new GridLayout(4, 1));
 
         JButton browseBooksButton = new JButton("Browse Books");
         JButton myProfileButton = new JButton("My Profile");
@@ -22,7 +23,7 @@ public class MainPage extends JFrame {
         browseBooksButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                BookDetailsPage bookDetailsPage = new BookDetailsPage(context);
+                BookDetailsPage bookDetailsPage = new BookDetailsPage();
                 bookDetailsPage.setVisible(true);
                 dispose();
             }
@@ -31,7 +32,7 @@ public class MainPage extends JFrame {
         myProfileButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ProfilePage profilePage = new ProfilePage(context);
+                ProfilePage profilePage = new ProfilePage();
                 profilePage.setVisible(true);
                 dispose();
             }
@@ -40,7 +41,7 @@ public class MainPage extends JFrame {
         logoutButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoginPage loginPage = new LoginPage(context);
+                LoginPage loginPage = new LoginPage();
                 loginPage.setVisible(true);
                 dispose();
             }

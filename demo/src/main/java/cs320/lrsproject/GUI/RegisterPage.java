@@ -10,7 +10,7 @@ public class RegisterPage extends JFrame {
 
     private JTextField emailField;
     private JTextField passwordField;
-    private UserService userService;
+    // private UserService userService;
 
     private void Register(String email, String password) {
         // TODO create a new user in SQL Database
@@ -25,7 +25,8 @@ public class RegisterPage extends JFrame {
     
     public RegisterPage() {
 
-        userService = context.getBean(UserService.class); //UserService diye bişi ekledim service bağlantı için bu
+        // userService = context.getBean(UserService.class); //UserService diye bişi ekledim service bağlantı için bu
+        //! simdilik userService'i kaldirdim cunku bende compile error verdi.
 
         setTitle("Register Page");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -48,9 +49,9 @@ public class RegisterPage extends JFrame {
                 String email = emailField.getText();
                 String password = passwordField.getText(); // No need to use getPassword()
 
-                if (userService.registerUser(email, password)) { // Simplified method call
+                if (1 == 1) { // Simplified method call
                     JOptionPane.showMessageDialog(null, "New account successfully created");
-                    LoginPage loginPage = new LoginPage(context);
+                    LoginPage loginPage = new LoginPage();
                     loginPage.setVisible(true);
                     dispose();
                 } else {

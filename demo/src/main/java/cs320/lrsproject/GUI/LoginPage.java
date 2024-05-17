@@ -22,6 +22,9 @@ public class LoginPage extends JFrame {
 
         if (email.equals("admin") && password.equals("admin")) {
             JOptionPane.showMessageDialog(null, "Login Successful");
+            MainPage mainPage = new MainPage(null);
+            mainPage.setVisible(true);
+            dispose();
         } else {
             JOptionPane.showMessageDialog(null, "Invalid Username or Password");
         }
