@@ -9,17 +9,73 @@ public class Rental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rentalId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "book_id")
     private Book book;
 
+    @Temporal(TemporalType.TIMESTAMP)
     private Date rentalDate;
-    private Date returnDate;
-    private String status; // 'active', 'returned'
 
-    // Getters and setters
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date returnDate;
+
+    @Enumerated(EnumType.STRING)
+    private RentalStatus status; // Using enum for status
+
+    public Long getRentalId() {
+        return rentalId;
+    }
+
+    public void setRentalId(Long rentalId) {
+        this.rentalId = rentalId;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+
+    public void setBook(Book book) {
+        this.book = book;
+    }
+
+    public Date getRentalDate() {
+        return rentalDate;
+    }
+
+    public void setRentalDate(Date rentalDate) {
+        this.rentalDate = rentalDate;
+    }
+
+    public Date getReturnDate() {
+        return returnDate;
+    }
+
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
+
+    public RentalStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(RentalStatus status) {
+        this.status = status;
+    }
+}
+
+// Enum for RentalStatus
+enum RentalStatus {
+    ACTIVE, RETURNED
 }
