@@ -1,0 +1,27 @@
+package cs320.lrsproject.demo.controller;
+
+import cs320.lrsproject.demo.service.PaymentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/payments")
+public class PaymentController {
+
+    @Autowired
+    private PaymentService paymentService;
+
+    @PostMapping("/process")
+    public ResponseEntity<String> processPayment(@RequestBody String creditCardNumber) {
+        boolean isValid = paymentService.validatePayment(creditCardNumber);
+        if (isValid) {
+            return ResponseEntity.ok("Payment processed successfully.");
+        } else {
+            return ResponseEntity.badRequest().body("Invalid credit card number. Please provide a 16-digit number.");
+        }
+    }
+}
