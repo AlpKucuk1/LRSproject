@@ -3,12 +3,13 @@ package cs320.lrsproject.model;
 import javax.persistence.*;
 
 @Entity
-
 public class Book {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String author;
-    private String subject;
+    private String genre;
     private double price;
 
     // Getters and setters
@@ -36,12 +37,12 @@ public class Book {
         this.author = author;
     }
 
-    public String getSubject() {
-        return subject;
+    public String getGenre() {
+        return genre;
     }
 
-    public void setSubject(String subject) {
-        this.subject = subject;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public double getPrice() {
